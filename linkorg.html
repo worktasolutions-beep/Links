@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Link Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f4f6fb;
+      font-family: Arial, sans-serif;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .error {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <iframe id="appFrame"></iframe>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("key");
+
+    if (!key) {
+      document.body.innerHTML =
+        '<div class="error">Missing key in URL</div>';
+    } else {
+      document.getElementById("appFrame").src =
+        "https://script.google.com/macros/s/AKfycbwCMmMMy9Kjz5KDM3-bZzO7qhyPyQVQR5Jk3qG3CB2BpOvMhZ9jWGJc3yZr_ZRgtWiA/exec" +
+        encodeURIComponent(key);
+    }
+  </script>
+
+</body>
+</html>
